@@ -1,0 +1,99 @@
+<!-- This is GUI for Breast Cancer Detection Application Using Machine Learning Classifer -->
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Air-Quality-Index-Predictor</title>
+
+  <style>
+			/* CSS code for button */
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background-image: url('static/images/AQIIMG.jpg');
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: 100% 100%;
+				background-position: center;
+			}
+
+			/* CSS code for button */
+			.bttn:hover {
+				transition: all 0.3s ease 0s;
+				cursor: pointer;
+				opacity: 0.8;
+				/* transform: translate(-50%, -5px); */
+			}
+			input {
+				width: 350px;
+				padding: 10px;
+				margin: 10px;
+				opacity: 0.5;
+			}
+			.bttn {
+				font-size: 18px;
+				transform: translate(-50%);
+				position: absolute;
+				background: white;
+				outline: none;
+				border: 1px solid black;
+				padding: 20px;
+				opacity: 0.5;
+				width: 200px;
+				border-radius: 5px;
+			}
+			img {
+				width: 50%;
+			}
+		</style>
+
+</head>
+
+<body>
+
+  
+ 
+ 
+ <div class="login">
+	
+    <center>
+    <form action="{{ url_for('predict')}}"method="post">
+        <h1>Enter the value of following features >>></h1>
+        
+    	<input type="text" name="T" placeholder="Average Temperature(°C)" required="required" />
+        <input type="text" name="TM" placeholder="Maximum Temperature(°C)" required="required" />
+		<br>
+    	<input type="text" name="Tm" placeholder="Minimum Temperature(°C)" required="required" />
+        <input type="text" name="SLP" placeholder="Atmospheric Pressure at Sea Level(hpa)" required="required" />
+		<br>
+        <input type="text" name="H" placeholder="Average Relative Humitidy(%)" required="required" />
+		<input type="text" name="VV" placeholder="Average Visibility(km)" required="required" />
+    	<br>
+    	<input type="text" name="V" placeholder="Average Wind Speed(km/h)" required="required" />
+        <input type="text" name="VM" placeholder="Maximum Sustained Wind Speed (km/h)" required="required" />
+		<br>
+        <br>
+        
+        <div class="button_cont" align="center"><a class="button_css" href="https://github.com/akd15102091?tab=repositories" target="_blank" rel="nofollow noopener">
+            <button type="submit" class="bttn"><strong>Predict AQI</strong></button></a>
+        </div>
+        
+    </form>
+    </center>
+   
+   <!-- Show predicted output using ML model --> 
+   <div>
+       <center>
+<br>
+<br>
+<br>
+   <h1>{{ prediction_text }}</h1>
+       </center>
+   </div>
+
+ </div>
+<div align="center">
+    <img src="static/images/ranges.png" class="w3-border w3-padding" alt="AIQ-Prediction" width="700">
+  </div>
+</body>
+</html>
